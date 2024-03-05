@@ -4,11 +4,30 @@ using UnityEngine.EventSystems;
 public class GameButton : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] private ButtonHolder _holder;
+    private bool _moving;
+    private Vector3 _startingPosition;
+    private Vector3 _positionToMove;
+    private float _moveTimer;
 
     private void Awake()
     {
         _holder.SetGameButton(this);
         transform.position = _holder.transform.position;
+    }
+
+
+    private void Update()
+    {
+        if (_moving)
+        {
+            _moveTimer += Time.deltaTime * 2;
+            if (_moveTimer > 1f)
+            {
+                _moveTimer = 1;
+                _moving = false;
+            }
+            transform.position = Vector3.Lerp(_startingPosition, _positionToMove, _moveTimer);
+        }
     }
 
     private void TryToMove()
@@ -25,17 +44,19 @@ public class GameButton : MonoBehaviour, IPointerClickHandler
 
         if (movableHolder != null)
         {
+            _moving = true;
+            _moveTimer = 0;
+            _startingPosition = transform.position;
             _holder.SetGameButton(null);
             _holder = movableHolder;
+            _positionToMove = _holder.transform.position;
             _holder.SetGameButton(this);
-            transform.position = _holder.transform.position;
             GameManager.Instance.CheckForVictoryCondition();
         }
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("Hit button");
         TryToMove();
     }
 }
