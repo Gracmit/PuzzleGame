@@ -3,6 +3,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
+    private WinScreenUI _winScreen;
 
     public static GameManager Instance => _instance;
 
@@ -10,8 +11,11 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if(_instance == null)
+        if (_instance == null)
+        {
             _instance = this;
+            DontDestroyOnLoad(this);
+        }
         else
             Destroy(this);
     }
@@ -19,6 +23,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         FindButtonHolders();
+        _winScreen = FindObjectOfType<WinScreenUI>();
     }
 
     public void FindButtonHolders()
@@ -38,7 +43,7 @@ public class GameManager : MonoBehaviour
 
         if (victory)
         {
-            Debug.Log("Win");
+            _winScreen.Show();
         }
     }
 }
