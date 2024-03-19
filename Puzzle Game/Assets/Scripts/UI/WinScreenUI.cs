@@ -12,13 +12,14 @@ public class WinScreenUI : MonoBehaviour
     {
         _winScreen = GetComponentInChildren<Image>().gameObject;
         _winScreen.SetActive(false);
+        GameManager.Instance.Won += HandleWonState;
     }
 
-    public void Show()
+    private void HandleWonState()
     {
         _winScreen.SetActive(true);
     }
-
+    
     public void ReturnToHomeScreen()
     {
         //Todo

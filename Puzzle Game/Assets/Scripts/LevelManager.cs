@@ -1,11 +1,16 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] private GameObject _linePrefab;
+    [SerializeField] private bool _timerLevel;
+    [SerializeField] private int _levelTime;
+    
+    public event Action<int> StartTimer;
+
     private List<Connection> _connections;
 
     [Serializable]
@@ -20,9 +25,18 @@ public class LevelManager : MonoBehaviour
             EndingHolder = endingHolder;
         }
     }
+
     void Start()
     {
         CreateLinesBetweenConnectedButtonHolders();
+        if (_timerLevel) StartCoroutine(WaitToStartTheTimer());
+    }
+
+    private IEnumerator WaitToStartTheTimer()
+    {
+        yield return null;
+        StartTimer?.Invoke(_levelTime);
+        
     }
 
     private void CreateLinesBetweenConnectedButtonHolders()

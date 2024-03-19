@@ -1,13 +1,15 @@
+using System;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private static GameManager _instance;
-    private WinScreenUI _winScreen;
-
     public static GameManager Instance => _instance;
+    public event Action Won;
 
+    private static GameManager _instance;
     private ButtonHolder[] _buttonHolders;
+    private int _piecesMoving;
+
 
     private void Awake()
     {
@@ -23,8 +25,8 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         FindButtonHolders();
-        _winScreen = FindObjectOfType<WinScreenUI>();
     }
+    
 
     public void FindButtonHolders()
     {
@@ -41,9 +43,23 @@ public class GameManager : MonoBehaviour
             victory = false;
         }
 
-        if (victory)
+        if (victory && _piecesMoving <= 0)
         {
-            _winScreen.Show();
+            Won?.Invoke();
+        }
+    }
+
+    public void PieceMoving()
+    {
+        _piecesMoving++;
+    }
+
+    public void PieceStopped()
+    {
+        _piecesMoving--;
+        if (_piecesMoving == 0)
+        {
+            CheckForVictoryCondition();
         }
     }
 }

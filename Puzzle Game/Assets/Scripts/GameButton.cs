@@ -25,6 +25,7 @@ public class GameButton : MonoBehaviour, IPointerClickHandler
             {
                 _moveTimer = 1;
                 _moving = false;
+                GameManager.Instance.PieceStopped();
             }
             transform.position = Vector3.Lerp(_startingPosition, _positionToMove, _moveTimer);
         }
@@ -32,6 +33,11 @@ public class GameButton : MonoBehaviour, IPointerClickHandler
 
     private void TryToMove()
     {
+        if (_moving)
+        {
+            return;
+        }
+        
         ButtonHolder movableHolder = null;
         foreach (var linkedHolder in _holder.LinkedHolders)
         {
@@ -44,6 +50,7 @@ public class GameButton : MonoBehaviour, IPointerClickHandler
 
         if (movableHolder != null)
         {
+            GameManager.Instance.PieceMoving();
             _moving = true;
             _moveTimer = 0;
             _startingPosition = transform.position;
