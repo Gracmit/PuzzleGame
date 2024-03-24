@@ -5,6 +5,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance => _instance;
     public event Action Won;
+    public event Action Lost;
+    public event Action Moved;
 
     private static GameManager _instance;
     private ButtonHolder[] _buttonHolders;
@@ -26,16 +28,16 @@ public class GameManager : MonoBehaviour
     {
         FindButtonHolders();
     }
-    
 
-    public void FindButtonHolders()
+
+    private void FindButtonHolders()
     {
         _buttonHolders = FindObjectsOfType<ButtonHolder>();
     }
 
     public void CheckForVictoryCondition()
     {
-        bool victory = true;
+        var victory = true;
         foreach (var buttonHolder in _buttonHolders)
         {
             if(buttonHolder.HasCorrectButton)
@@ -61,5 +63,16 @@ public class GameManager : MonoBehaviour
         {
             CheckForVictoryCondition();
         }
+        Moved?.Invoke();
+    }
+
+    public void LevelFailed()
+    {
+        Lost?.Invoke();
+    }
+
+    public void NewLevelLoaded()
+    {
+        FindButtonHolders();
     }
 }

@@ -58,7 +58,7 @@ public class GameButton : MonoBehaviour, IPointerClickHandler
             _holder = movableHolder;
             _positionToMove = _holder.transform.position;
             _holder.SetGameButton(this);
-            GameManager.Instance.CheckForVictoryCondition();
+            //GameManager.Instance.CheckForVictoryCondition();
         }
     }
 

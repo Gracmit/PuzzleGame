@@ -28,7 +28,7 @@ public class Timer : MonoBehaviour
 
             if (_timer <= 0)
             {
-                Debug.Log("Lost");
+                GameManager.Instance.LevelFailed();
                 _timerRunning = false;
             }
         }

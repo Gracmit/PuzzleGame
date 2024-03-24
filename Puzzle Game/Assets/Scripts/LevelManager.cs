@@ -8,8 +8,12 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject _linePrefab;
     [SerializeField] private bool _timerLevel;
     [SerializeField] private int _levelTime;
+    [SerializeField] private bool _moveLimitLevel;
+    [SerializeField] private int _moveLimit;
+    
     
     public event Action<int> StartTimer;
+    public event Action<int> StartMoveLimitCounter;
 
     private List<Connection> _connections;
 
@@ -28,8 +32,16 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
+        GameManager.Instance.NewLevelLoaded();
         CreateLinesBetweenConnectedButtonHolders();
         if (_timerLevel) StartCoroutine(WaitToStartTheTimer());
+        if (_moveLimitLevel) StartCoroutine(WaitToStartTheLimitCounter());
+    }
+
+    private IEnumerator WaitToStartTheLimitCounter()
+    {
+        yield return null;
+        StartMoveLimitCounter?.Invoke(_moveLimit);
     }
 
     private IEnumerator WaitToStartTheTimer()
