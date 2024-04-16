@@ -38,7 +38,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6984029259779863411, guid: d3ee01d8736813f41b1d1a893f67ce96, type: 3}
       propertyPath: m_Name
-      value: Mustard ButtonHolder
+      value: Green ButtonHolder
       objectReference: {fileID: 0}
     - target: {fileID: 7105695718340773933, guid: d3ee01d8736813f41b1d1a893f67ce96, type: 3}
       propertyPath: m_Name
@@ -46,11 +46,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8797428456770349356, guid: d3ee01d8736813f41b1d1a893f67ce96, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.998
       objectReference: {fileID: 0}
     - target: {fileID: 8797428456770349356, guid: d3ee01d8736813f41b1d1a893f67ce96, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 8797428456770349356, guid: d3ee01d8736813f41b1d1a893f67ce96, type: 3}
       propertyPath: m_LocalPosition.z
