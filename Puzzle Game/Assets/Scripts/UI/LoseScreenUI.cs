@@ -30,7 +30,7 @@ public class LoseScreenUI : MonoBehaviour
     
     public void ReturnToHomeScreen()
     {
-        //Todo
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void RestartLevel()

@@ -35,7 +35,7 @@ public class WinScreenUI : MonoBehaviour
     
     public void ReturnToHomeScreen()
     {
-        //Todo
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void RestartLevel()
@@ -45,6 +45,6 @@ public class WinScreenUI : MonoBehaviour
 
     public void NextLevel()
     {
-        //Todo
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
