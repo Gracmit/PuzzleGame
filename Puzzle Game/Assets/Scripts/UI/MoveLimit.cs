@@ -17,13 +17,13 @@ public class MoveLimit : MonoBehaviour
         FindObjectOfType<LevelManager>().StartMoveLimitCounter += HandleStartMoveLimitCounter;
         GameManager.Instance.Moved += HandleMoved;
         GameManager.Instance.Won += HandleWonState;
+        GameManager.Instance.Lost += HandleLostState;
         
     }
 
-    private void HandleWonState()
-    {
-        _limitRunning = false;
-    }
+    private void HandleLostState() => _limitRunning = false;
+
+    private void HandleWonState() => _limitRunning = false;
 
     private void HandleMoved()
     {
