@@ -68,7 +68,9 @@ public class LevelManager : MonoBehaviour
             var instance = Instantiate(_linePrefab, connection.StartingHolder.transform.position, rotation);
 
             var distance = Vector3.Distance(connection.EndingHolder.transform.position, connection.StartingHolder.transform.position);
-            instance.transform.localScale = new Vector3(distance, 0.15f, 1);
+            instance.transform.position = Vector3.Lerp(connection.EndingHolder.transform.position, connection.StartingHolder.transform.position, 0.5f);
+            var spriteRenderer = instance.GetComponent<SpriteRenderer>();
+            spriteRenderer.size = new Vector2(distance - .9f, 0.15f);
         }
     }
 
