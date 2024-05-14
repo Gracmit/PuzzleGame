@@ -4,6 +4,7 @@ public class AudioManager : MonoBehaviour
 {
     [SerializeField] private AudioClip _victorySfx;
     [SerializeField] private AudioClip _loseSfx;
+    [SerializeField] private AudioClip _moveSfx;
     [SerializeField] private AudioSource _sfxSource;
 
     private static AudioManager _instance;
@@ -23,11 +24,18 @@ public class AudioManager : MonoBehaviour
     {
         _sfxSource.clip = _victorySfx;
         _sfxSource.Play();
+        
     }
     
     public void PlayLoseSFX()
     {
         _sfxSource.clip = _loseSfx;
+        _sfxSource.Play();
+    }
+
+    public void PlayMoveSFX()
+    {
+        _sfxSource.clip = _moveSfx;
         _sfxSource.Play();
     }
 }

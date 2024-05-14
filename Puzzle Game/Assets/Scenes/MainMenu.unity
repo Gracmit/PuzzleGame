@@ -614,6 +614,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _victorySfx: {fileID: 8300000, guid: 2bd559a8d257feb40894936f5771bfb7, type: 3}
   _loseSfx: {fileID: 8300000, guid: 143b303750c983648a25cf4c59f3b6b4, type: 3}
+  _moveSfx: {fileID: 8300000, guid: 9dc9e69d024040c40a0baeb87f85c8c0, type: 3}
   _sfxSource: {fileID: 824438054}
 --- !u!82 &824438054
 AudioSource:

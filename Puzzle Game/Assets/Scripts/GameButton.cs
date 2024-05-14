@@ -58,6 +58,7 @@ public class GameButton : MonoBehaviour, IPointerClickHandler
             _holder = movableHolder;
             _positionToMove = _holder.transform.position;
             _holder.SetGameButton(this);
+            AudioManager.Instance.PlayMoveSFX();
             //GameManager.Instance.CheckForVictoryCondition();
         }
     }
