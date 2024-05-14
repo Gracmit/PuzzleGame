@@ -713,7 +713,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7244887045846904808, guid: 0188578183aa0a943b7700b86a22a274, type: 3}
       propertyPath: _moveLimit
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7244887045846904808, guid: 0188578183aa0a943b7700b86a22a274, type: 3}
       propertyPath: _timerLevel

@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
         if (victory && _piecesMoving <= 0)
         {
             Won?.Invoke();
+            AudioManager.Instance.PlayVictorySFX();
         }
     }
 
@@ -69,6 +70,7 @@ public class GameManager : MonoBehaviour
     public void LevelFailed()
     {
         Lost?.Invoke();
+        AudioManager.Instance.PlayLoseSFX();
     }
 
     public void NewLevelLoaded()
