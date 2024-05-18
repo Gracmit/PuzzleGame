@@ -6,6 +6,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip _loseSfx;
     [SerializeField] private AudioClip _moveSfx;
     [SerializeField] private AudioSource _sfxSource;
+    [SerializeField] private AudioSource _musicSource;
 
     private static AudioManager _instance;
     public static AudioManager Instance => _instance;
@@ -15,9 +16,19 @@ public class AudioManager : MonoBehaviour
             _instance = this;
         else
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
         DontDestroyOnLoad(this);
+    }
+
+    private void Start()
+    {
+        GameManager.Instance.OptionsLoaded += HandleOptionsLoaded;
+    }
+
+    private void HandleOptionsLoaded(float volume)
+    {
+        ChangeVolume(volume);
     }
 
     public void PlayVictorySFX()
@@ -37,5 +48,11 @@ public class AudioManager : MonoBehaviour
     {
         _sfxSource.clip = _moveSfx;
         _sfxSource.Play();
+    }
+
+    public void ChangeVolume(float volumeSliderValue)
+    {
+        _musicSource.volume = volumeSliderValue;
+        _sfxSource.volume = volumeSliderValue;
     }
 }

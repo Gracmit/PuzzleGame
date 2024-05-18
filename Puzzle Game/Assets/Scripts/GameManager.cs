@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public event Action Lost;
     public event Action Moved;
 
+    public event Action<float> OptionsLoaded;
+
     [SerializeField] private SaveData _saveData;
 
     private static GameManager _instance;
@@ -25,7 +27,7 @@ public class GameManager : MonoBehaviour
             LoadSavedData();
         }
         else
-            Destroy(this);
+            Destroy(gameObject);
     }
 
     private void Start() => FindButtonHolders();
@@ -74,9 +76,12 @@ public class GameManager : MonoBehaviour
     private void LoadSavedData()
     {
         var levelIndex = PlayerPrefs.GetInt("levelIndex", 0);
-        if (levelIndex == 0) return;
+        if (levelIndex != 0) _saveData.NextUnBeatenLevelIndex = levelIndex;
 
-        _saveData.NextUnBeatenLevelIndex = levelIndex;
+        
+        var volume = PlayerPrefs.GetFloat("VolumeValue", -1f);
+        if (volume != -1) OptionsLoaded?.Invoke(volume);
+        
     }
 
     private void SaveData()
@@ -86,4 +91,27 @@ public class GameManager : MonoBehaviour
     }
 
     public int GetNextLevelIndex() => _saveData.NextUnBeatenLevelIndex;
+
+    public void SetOptionsData(float volumeSliderValue)
+    {
+        PlayerPrefs.SetFloat("VolumeValue", volumeSliderValue);
+    }
+
+    public void SaveOptionsData()
+    {
+        PlayerPrefs.Save();
+    }
+
+    public void ResetSavedProgress()
+    {
+        _saveData.NextUnBeatenLevelIndex = 1;
+        PlayerPrefs.SetInt("levelIndex", 0);
+        PlayerPrefs.Save();
+    }
+
+    public void SetVolume()
+    {
+        var volume = PlayerPrefs.GetFloat("VolumeValue", -1f);
+        if (volume != -1) OptionsLoaded?.Invoke(volume);
+    }
 }
