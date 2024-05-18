@@ -27,6 +27,14 @@ public class MainMenu : MonoBehaviour
         _canvasGroup.blocksRaycasts = false;
         MainMenuManager.Instance.OpenOptionsMenu();
     }
+
+    public void OpenLevelSelect()
+    {        
+        _canvasGroup.alpha = 0;
+        _canvasGroup.interactable = false;
+        _canvasGroup.blocksRaycasts = false;
+        MainMenuManager.Instance.OpenLevelSelect();
+    }
     
     public void QuitGame()
     {

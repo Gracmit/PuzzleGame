@@ -11,7 +11,6 @@ public class WinScreenUI : MonoBehaviour
     private GameObject _winScreen;
     private void Awake()
     {
-        Debug.Log("hello");
         _winScreen = null;
         _winScreen = GetComponentInChildren<Image>().gameObject;
         _winScreen.SetActive(false);
@@ -19,7 +18,6 @@ public class WinScreenUI : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("Start");
         GameManager.Instance.Won += HandleWonState;
     }
     

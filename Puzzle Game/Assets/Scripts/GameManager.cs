@@ -8,8 +8,8 @@ public class GameManager : MonoBehaviour
     public event Action Won;
     public event Action Lost;
     public event Action Moved;
-
     public event Action<float> OptionsLoaded;
+    public event Action DataReset;
 
     [SerializeField] private SaveData _saveData;
 
@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
         {
             Won?.Invoke();
             AudioManager.Instance.PlayVictorySFX();
+            if (SceneManager.GetActiveScene().buildIndex + 1 <= _saveData.NextUnBeatenLevelIndex) return;
             _saveData.NextUnBeatenLevelIndex = SceneManager.GetActiveScene().buildIndex + 1;
             SaveData();
         }
@@ -107,11 +108,17 @@ public class GameManager : MonoBehaviour
         _saveData.NextUnBeatenLevelIndex = 1;
         PlayerPrefs.SetInt("levelIndex", 0);
         PlayerPrefs.Save();
+        DataReset?.Invoke();
     }
 
     public void SetVolume()
     {
         var volume = PlayerPrefs.GetFloat("VolumeValue", -1f);
         if (volume != -1) OptionsLoaded?.Invoke(volume);
+    }
+
+    public int GetClearedLevels()
+    {
+        return _saveData.NextUnBeatenLevelIndex;
     }
 }

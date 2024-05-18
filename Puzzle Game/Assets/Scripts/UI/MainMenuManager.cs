@@ -7,6 +7,7 @@ public class MainMenuManager : MonoBehaviour
     private CreditsMenu _creditsMenu;
     private static MainMenuManager _instance;
     private MainMenu _mainMenu;
+    private LevelSelectUI _levelSelect;
 
     public static MainMenuManager Instance => _instance;
 
@@ -25,6 +26,7 @@ public class MainMenuManager : MonoBehaviour
         _resetDataMenu = GetComponentInChildren<ResetDataMenu>();
         _creditsMenu = GetComponentInChildren<CreditsMenu>();
         _mainMenu = GetComponentInChildren<MainMenu>();
+        _levelSelect = GetComponentInChildren<LevelSelectUI>();
         GameManager.Instance.SetVolume();
     }
 
@@ -35,4 +37,6 @@ public class MainMenuManager : MonoBehaviour
     public void OpenCreditsMenu() => _creditsMenu.Open();
 
     public void OpenMainMenu() => _mainMenu.Open();
+
+    public void OpenLevelSelect() => _levelSelect.Open();
 }
