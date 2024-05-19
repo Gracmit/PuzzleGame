@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd891b5b3e7e404a98e50cb73064b3f6, type: 3}
   m_Name: SaveData
   m_EditorClassIdentifier: 
-  NextUnBeatenLevelIndex: 3
+  NextUnBeatenLevelIndex: 1
