@@ -76,6 +76,7 @@ public class GameManager : MonoBehaviour
 
     private void LoadSavedData()
     {
+        if (_saveData == null) return;
         var levelIndex = PlayerPrefs.GetInt("levelIndex", 0);
         if (levelIndex != 0) _saveData.NextUnBeatenLevelIndex = levelIndex;
 
