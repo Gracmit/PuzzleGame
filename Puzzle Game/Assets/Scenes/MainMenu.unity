@@ -1371,7 +1371,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _contentContainer: {fileID: 455793320}
   _buttonPrefab: {fileID: 4589393297435691455, guid: d86ad1082ae60fe4a93e6fa5a9f3cb8f, type: 3}
-  LevelCount: 16
+  LevelCount: 20
   _colors:
   - {r: 0.16862746, g: 1, b: 0, a: 1}
   - {r: 0, g: 0.9647059, b: 1, a: 1}
