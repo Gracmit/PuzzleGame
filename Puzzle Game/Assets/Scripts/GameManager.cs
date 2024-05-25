@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
         var victory = true;
         foreach (var buttonHolder in _buttonHolders)
         {
-            if(buttonHolder.HasCorrectButton)
+            if (buttonHolder.HasCorrectButton)
                 continue;
             victory = false;
         }
@@ -63,6 +63,7 @@ public class GameManager : MonoBehaviour
         {
             CheckForVictoryCondition();
         }
+
         Moved?.Invoke();
     }
 
@@ -80,10 +81,10 @@ public class GameManager : MonoBehaviour
         var levelIndex = PlayerPrefs.GetInt("levelIndex", 0);
         if (levelIndex != 0) _saveData.NextUnBeatenLevelIndex = levelIndex;
 
-        
+
         var volume = PlayerPrefs.GetFloat("VolumeValue", -1f);
         if (volume != -1) OptionsLoaded?.Invoke(volume);
-        
+
     }
 
     private void SaveData()

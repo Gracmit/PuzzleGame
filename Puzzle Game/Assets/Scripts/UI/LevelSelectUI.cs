@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,6 +24,11 @@ public class LevelSelectUI : MonoBehaviour
     {
         GameManager.Instance.DataReset += HandleDataReset;
         PopulateContent();
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.DataReset -= HandleDataReset;
     }
 
     private void HandleDataReset()

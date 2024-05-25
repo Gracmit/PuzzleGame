@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d382569a21cd0fe4f99462ba0a9a9a95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _saveData: {fileID: 0}
 --- !u!4 &26211808
 Transform:
   m_ObjectHideFlags: 0
@@ -384,17 +385,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d9d54188ea9ec64babf039eb33cc1bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &635224286 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 842309848282867337, guid: dab9220a2c0064847ae32b5bf4979ce6, type: 3}
-  m_PrefabInstance: {fileID: 5300506426145774691}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12761542b5c6495b95c1fbba20162391, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &715725080 stripped
@@ -1244,30 +1234,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2310360209045056594, guid: dab9220a2c0064847ae32b5bf4979ce6, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 635224286}
-    - target: {fileID: 2310360209045056594, guid: dab9220a2c0064847ae32b5bf4979ce6, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ReturnToHomeScreen
-      objectReference: {fileID: 0}
-    - target: {fileID: 2310360209045056594, guid: dab9220a2c0064847ae32b5bf4979ce6, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: LoseScreenUI, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 5258628103883456078, guid: dab9220a2c0064847ae32b5bf4979ce6, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 635224286}
-    - target: {fileID: 5258628103883456078, guid: dab9220a2c0064847ae32b5bf4979ce6, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RestartLevel
-      objectReference: {fileID: 0}
-    - target: {fileID: 5258628103883456078, guid: dab9220a2c0064847ae32b5bf4979ce6, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: LoseScreenUI, Assembly-CSharp
-      objectReference: {fileID: 0}
     - target: {fileID: 7654159904988920769, guid: dab9220a2c0064847ae32b5bf4979ce6, type: 3}
       propertyPath: m_Pivot.x
       value: 0

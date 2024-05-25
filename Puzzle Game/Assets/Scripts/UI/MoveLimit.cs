@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -18,7 +19,13 @@ public class MoveLimit : MonoBehaviour
         GameManager.Instance.Moved += HandleMoved;
         GameManager.Instance.Won += HandleWonState;
         GameManager.Instance.Lost += HandleLostState;
-        
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.Moved -= HandleMoved;
+        GameManager.Instance.Won -= HandleWonState;
+        GameManager.Instance.Lost -= HandleLostState;
     }
 
     private void HandleLostState() => _limitRunning = false;

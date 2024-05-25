@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -16,6 +17,11 @@ public class Timer : MonoBehaviour
     {
         FindObjectOfType<LevelManager>().StartTimer += HandleTimerStart;
         GameManager.Instance.Won += HandleWonState;
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.Won -= HandleWonState;
     }
 
 
